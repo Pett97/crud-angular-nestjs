@@ -1,0 +1,56 @@
+<mat-card>
+  <mat-toolbar color="primary">
+    <span>CURSOS</span>
+    <span class="example-spacer"></span>
+    <button  [routerLink]="['/createCategory']"mat-raised-button color="accent">Nova Categoria</button>
+    <span class="example-spacer"></span>
+    <form [formGroup]='filterForm' (submit)="getOneCategory()">
+      <label for="search">
+        Buscar Por ID
+        <input matInput type="text" placeholder="1" formControlName="id">
+      </label>
+      <button mat-flat-button color="accent" type="submit">Filtrar</button>
+  </form>
+  <span class="example-spacer"></span>
+  <button mat-flat-button color="accent" (click)="clearFilter()" type="submit">Limpar</button>
+  </mat-toolbar>
+  
+</mat-card>
+<!-- Table-->
+<mat-card>
+  <mat-card-content>
+    <mat-toolbar color="primary">
+      <span>Categorias</span>
+    </mat-toolbar>
+    <table mat-table [dataSource]="categoryList" class="mat-elevation-z8 demo-table">
+      <!-- id Column -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> ID CURSO </th>
+        <td mat-cell *matCellDef="let category">{{category.id}}: <mat-icon aria-hidden="false"
+            aria-label="Categoria do Curso" fontIcon="{{category.id | id_category}}"></mat-icon></td>
+      </ng-container>
+      <!-- Category Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> CATEGORIA </th>
+        <td mat-cell *matCellDef="let category">{{category.name}}</td>
+      </ng-container>
+      <!-- action Column -->
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef> Ações </th>
+        <td mat-cell *matCellDef="let category">
+          <button>
+            <a [routerLink]="['/updatecategory',category.id]">
+              <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="edit">
+              </mat-icon>
+            </a>
+          </button>
+          <button (click)="delete(category.id)">
+            <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="delete"></mat-icon>
+          </button>
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </mat-card-content>
+</mat-card>

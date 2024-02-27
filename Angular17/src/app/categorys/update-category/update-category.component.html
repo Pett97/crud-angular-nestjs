@@ -1,0 +1,8 @@
+<form [formGroup]='updateForm' (submit)="update()">
+    <mat-form-field>
+        <mat-label></mat-label>
+        Editar Categoria
+        <input matInput placeholder="nome novo da  Categoria" type="text" id="nameCategory" formControlName="newNameCategory">
+    </mat-form-field>
+    <button type="submit" color="primary">Atualizar</button>
+</form>

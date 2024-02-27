@@ -1,0 +1,50 @@
+<mat-card>
+  <mat-card-content>
+    @if(showTable === true){
+    <mat-toolbar color="primary">
+      <span>CURSOS</span>
+      <span class="example-spacer"></span>
+      <button [routerLink]="['/create-course']" mat-raised-button color="accent">Novo Curso</button>
+    </mat-toolbar>
+    <table mat-table [dataSource]="courseList" class="mat-elevation-z8 demo-table">
+      <!-- name Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Curso </th>
+        <td mat-cell *matCellDef="let course">{{course.name}} </td>
+      </ng-container>
+      <!--actions -->
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef>Ações</th>
+        <td mat-cell *matCellDef="let course">
+          <button>
+            <a [routerLink]="['/update-course',course.id]">
+              <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="edit">
+              </mat-icon>
+            </a>
+          </button>
+          <button (click)="deletar(course.id)">
+            <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="delete"></mat-icon>
+          </button>
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    }
+    @else if(errorLog ! =="") {
+    <mat-card>
+      <mat-toolbar color="primary">
+        <span>Buscando Dados</span>
+      </mat-toolbar>
+    </mat-card>
+    <mat-spinner></mat-spinner>
+    }
+    @else {
+    <mat-card>
+      <mat-toolbar color="warn">
+        {{errorLog}}
+      </mat-toolbar>
+    </mat-card>
+    }
+  </mat-card-content>
+</mat-card>

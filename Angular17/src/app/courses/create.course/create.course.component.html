@@ -1,0 +1,18 @@
+<mat-card>
+    <mat-toolbar color="accent">Criar Um Curso</mat-toolbar>
+    <form [formGroup]="createForm" (submit)="save()">
+        <mat-form-field>
+            Nome Curso
+            <input matInput type="text" id="nameCourse" formControlName="nameCourse">
+        </mat-form-field>
+        <mat-form-field>
+            Seleciona A Categoria
+            <select formControlName="selectCategory">
+                @for (item of categoryList;track item){
+                    <option [value]="item.id">{{item.name}}</option>
+                }
+            </select>
+        </mat-form-field>
+        <button  mat-flat-button color="primary">Salvar</button>
+    </form>    
+</mat-card>

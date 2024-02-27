@@ -1,0 +1,25 @@
+<p>
+  <mat-toolbar color="primary">
+    <span >CRUD COURSES+ NEST</span>
+  </mat-toolbar>
+</p>
+<p>
+  <mat-grid-list cols="3" rowHeight="50px">
+    <mat-grid-tile>
+      <a [routerLink]="['category']">
+        <button mat-flat-button color="primary">Categorias</button>
+      </a>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <a [routerLink]="['courses']">
+        <button mat-flat-button color="primary">Cursos</button>
+      </a>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <a [routerLink]="['table']">
+        <button mat-flat-button color="primary">Table</button>
+      </a>
+    </mat-grid-tile>
+  </mat-grid-list>
+</p>
+<router-outlet></router-outlet>

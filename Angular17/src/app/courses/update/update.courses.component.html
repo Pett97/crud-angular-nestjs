@@ -1,0 +1,22 @@
+<form [formGroup]='updateCourse' (submit)="update()">
+    <mat-form-field>
+        <mat-label>Editar Nome curso</mat-label>
+        Novo Nome
+        <input matInput type="text" formControlName="newName">
+    </mat-form-field>
+    <mat-form-field>
+        Selecione A Categoria
+        <select formControlName="selectCategory">
+            @for (item of categoryList; track item){
+            <option [value]="item.id">{{item.name}}</option>
+            }
+        </select>
+    </mat-form-field>
+    <button  mat-raised-button color="primary">Atualizar</button>
+    <select matNativeControl required>
+        <option value="volvo">Volvo</option>
+        <option value="saab">Saab</option>
+        <option value="mercedes">Mercedes</option>
+        <option value="audi">Audi</option>
+      </select>     
+</form>
