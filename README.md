@@ -10,3 +10,5 @@ docker pull pett97/crud-angular
 # OBS tem que iniciar o NEST 
 node /home/src/main.js
 
+# acesso via  172.17.0.2 
+
